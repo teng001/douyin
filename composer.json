@@ -1,0 +1,23 @@
+{
+    "name": "tengs/douyin",
+    "description": "抖音sdk网页接口",
+    "type": "library",
+    "require": {
+        "php": "^7.4"
+    },
+    "require-dev": {
+        "php": "^7.4"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "teng",
+            "email": "624040350@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tengs\\": "src/"
+        }
+    }
+}
