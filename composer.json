@@ -17,7 +17,14 @@
     ],
     "autoload": {
         "psr-4": {
-            "Tengs\\": "src/"
+            "Tengs\\Douyin\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Tengs\\Douyin\\ServiceProvider"
+            ]
         }
     }
 }
