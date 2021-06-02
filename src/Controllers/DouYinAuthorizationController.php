@@ -18,7 +18,7 @@ class DouYinAuthorizationController
         $state = $request->input('state');
         $scopeArr = $scopeArr ? Arr::wrap($scopeArr) : config('douyin.scope');
         $client_key = config('douyin.client_key'); // string | 应用唯一标识
-        $response_type = config('douyin.client_secret');; // string | 填写code
+        $response_type = 'code';; // string | 填写code
         $scope = join(',', $scopeArr); // string | 应用授权作用域,多个授权作用域以英文逗号（,）分隔
         $redirect_uri = route('douyin.callback'); // string | 授权成功后的回调地址，必须以http/https开头。域名必须对应申请应用时填写的域名，如不清楚请联系应用申请人。
         $url = 'https://open.douyin.com/platform/oauth/connect/?';
