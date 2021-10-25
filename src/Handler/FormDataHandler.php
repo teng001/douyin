@@ -7,15 +7,12 @@ namespace Tengs\Douyin\Handler;
 use Tengs\Douyin\Client\Client;
 use Tengs\Douyin\User;
 
-class RefreshTokenHandler extends Handler
+class FormDataHandler extends Handler
 {
     public function post(User $user)
     {
         try {
-            $body['client_key'] = config('douyin.client_key');
-            $body['grant_type'] = 'refresh_token';
-            $body['refresh_token'] = $user->getExpand()['refresh_token'];
-            $res = (new Client())->formDataPost($this->getUrl(), [], $body);
+            $res = (new Client())->formDataPost($this->getUrl(), $this->getQuery(), $this->getBody());
             if ($res['data']['error_code'] != 0) {
                 $this->ErrorHandleClosure($res);
             } else {
