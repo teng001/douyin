@@ -18,8 +18,9 @@ class AuthHandler extends Handler
             $res = (new Client())->get($this->getUrl(), $query);
             if ($res['data']['error_code'] != 0) {
                 $this->ErrorHandleClosure($res);
+            } else {
+                $this->SuccessHandleClosure($res['data']);
             }
-            $this->SuccessHandleClosure($res['data']);
         } catch (\Throwable $exception) {
             $res = [
                 'data' => [
@@ -40,8 +41,9 @@ class AuthHandler extends Handler
             $res = (new Client())->post($this->getUrl(), $query, $this->getBody());
             if ($res['data']['error_code'] != 0) {
                 $this->ErrorHandleClosure($res);
+            } else {
+                $this->SuccessHandleClosure($res['data']);
             }
-            $this->SuccessHandleClosure($res['data']);
         } catch (\Throwable $exception) {
             $res = [
                 'data' => [

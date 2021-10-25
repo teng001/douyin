@@ -18,8 +18,9 @@ class MediasHandler extends Handler
             $res = (new Client())->postUpload($this->getUrl(), array_merge($this->getQuery(),$query), $this->getBody());
             if ($res['data']['error_code'] != 0) {
                 $this->ErrorHandleClosure($res);
+            }else{
+                $this->SuccessHandleClosure($res['data']);
             }
-            $this->SuccessHandleClosure($res['data']);
         } catch (\Throwable $exception) {
             $res = [
                 'data' => [
@@ -39,8 +40,9 @@ class MediasHandler extends Handler
             $res = (new Client())->postUpload($this->getUrl(), array_merge($this->getQuery(),$query), $this->getBody());
             if ($res['data']['error_code'] != 0) {
                 $this->ErrorHandleClosure($res);
+            }else{
+                $this->SuccessHandleClosure($res['data']);
             }
-            $this->SuccessHandleClosure($res['data']);
         } catch (\Throwable $exception) {
             $res = [
                 'data' => [

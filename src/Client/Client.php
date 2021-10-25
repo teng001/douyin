@@ -69,4 +69,24 @@ class Client
             ClientException::throwError($exception->getMessage());
         }
     }
+
+    /**
+     * @param string $url
+     * @param array $query
+     * @param array $body
+     * @return mixed
+     * @throws ClientException
+     */
+    public function formDataPost(string $url, array $query = [], array $body = [])
+    {
+        try {
+            $res = (new \GuzzleHttp\Client())->post($this->host . $url, array_merge($body, ['query' => $query]));
+            if ($res->getStatusCode() != 200) {
+                ClientException::throwError('请求异常' . $res->getBody()->getContents());
+            }
+            return json_decode($res->getBody(), true);
+        } catch (GuzzleException $exception) {
+            ClientException::throwError($exception->getMessage());
+        }
+    }
 }

@@ -34,8 +34,9 @@ class UniversalHandler extends Handler
             $res = (new Client())->get($this->getUrl(), array_merge($this->getQuery(), $query));
             if ($res['data']['error_code'] != 0) {
                 $this->ErrorHandleClosure($res);
+            } else {
+                $this->SuccessHandleClosure($res['data']);
             }
-            $this->SuccessHandleClosure($res['data']);
         } catch (\Throwable $exception) {
             $res = [
                 'data' => [
